@@ -1,2 +1,3 @@
 # TP_I_AEDS
- Alunos: Matheus K., Esdras e Eduardo Henrique
+ * Primeiro TP de Algoritmo e Estrutura de Dados I.
+ Integrantes do grupo: Matheus Kauan, Esdras e Eduardo Henrique
