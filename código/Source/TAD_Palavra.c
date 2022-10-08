@@ -1,20 +1,23 @@
-#include "TAD_Palavra.h"
+#include"TAD_Palavra.h"
 
-/*Cria cadeia de caracteresde tamanho único para cada palavra*/
-void Criar_Palavra_Vazia(TPalavra* pPalavra, int n){
-    pPalavra->Palavra = (char *)malloc(n*sizeof(char));
+
+void FPalavra_Vazia(TPalavra* pPalavra){
+	
+	pPalavra->posicoes = (TLista_De_Posicoes*)malloc(sizeof(TLista_De_Posicoes));
+	FLPosicoes_Vazia(pPalavra->posicoes);
+	pPalavra->palavra = NULL;
+	
 }
 
-void Preenche_Cadeia_De_Caracteres(TPalavra* pPalavra, FILE *file){
-    
-    /*Contador de caracteres de cada palavra*/
-    int cont = 0;
-    char c;
-    c = fgetc(file); 
-    while(c != '\n'){
-        cont++;
-        c = fgetc(file);
-    }
-    TPalavra* aux_palavra; 
-    Criar_Palavra_Vazia(aux_palavra, cont);
+void Preenche_Cadeia_De_Caracteres(TPalavra* pPalavra, char *ppalavra, int tamanho){
+
+	pPalavra->palavra =  (char*)malloc(sizeof(char)*tamanho);
+	strcpy(pPalavra->palavra, ppalavra);
+
+}
+
+char* Retorna_Cadeia_De_Caracteres(TPalavra* pPalavra){
+	
+	return pPalavra->palavra;
+	
 }
