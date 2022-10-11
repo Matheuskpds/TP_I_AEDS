@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"TAD_Posicao.h"
+#include "TAD_Lista_De_Posicoes.h"
 
 void FLPosicoes_Vazia(TLista_De_Posicoes* pLista){
 
@@ -24,6 +24,7 @@ void Imprimir_Posicao(TLista_De_Posicoes* pLista){
 
 	CPosicao* pAux;
     pAux = pLista->pPrimeiro->pProx;
+    printf("Linhas: ");
     while(pAux != NULL) {
     
         printf("%d ", pAux->posicao);
