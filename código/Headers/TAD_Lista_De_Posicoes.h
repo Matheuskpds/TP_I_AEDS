@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 
 
 typedef struct Posicao { //Célula para guardar as posições 
