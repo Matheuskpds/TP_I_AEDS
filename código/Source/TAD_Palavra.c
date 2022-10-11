@@ -1,17 +1,14 @@
 #include"TAD_Palavra.h"
-#include "TAD_Lista_De_Posicoes.h"
-
-
-/*Cria uma posicao vazia para a linha*/
-void FPosicao_Vazia(TPalavra* pPalavra){
-	FLPosicoes_Vazia(pPalavra->posicoes);
-	pPalavra->Palavra = NULL;	
-}
 
 /*Recebe a palavra e armazena na cadeia de caracteres*/
-void Preenche_Cadeia_De_Caracteres(TPalavra* pPalavra, char *ppalavra, int tamanho){
+void Cria_Palavra_Vazia(TPalavra* pPalavra, int tamanho){
+	pPalavra->Palavra = (char*)malloc(sizeof(char)*tamanho);
+	pPalavra->posicoes = (TLista_De_Posicoes*)malloc(sizeof(TLista_De_Posicoes));
+	FLPosicoes_Vazia(pPalavra->posicoes);
+}
 
-	pPalavra->Palavra =  (char*)malloc(sizeof(char)*tamanho);
+void Preenche_Cadeia_De_Caracteres(TPalavra* pPalavra, char *ppalavra){
+
 	strcpy(pPalavra->Palavra, ppalavra);
 
 }
@@ -26,7 +23,7 @@ void Imprime_Cadeia_De_Caracteres(TPalavra* pPalavra){
 	printf("%s\n", pPalavra->Palavra);
 }
 
-void Imprime_Palavra(TPalavra* pPalavra, TLista_De_Posicoes *posicoes){
-	printf("Palavra: %s", pPalavra->Palavra);
-	Imprimir_Posicao(posicoes);
+void Imprime_Palavra(TPalavra* pPalavra){
+	printf("Palavra: %s", Retorna_Cadeia_De_Caracteres(pPalavra));
+	Imprimir_Posicao(pPalavra->posicoes);
 }
