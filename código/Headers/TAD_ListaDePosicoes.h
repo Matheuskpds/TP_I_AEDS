@@ -1,6 +1,6 @@
 #include <stdio.h>
-
-
+#include <stdlib.h>
+    
 typedef struct Posicao { //Célula para guardar as posições 
     
     int posicao;
