@@ -23,12 +23,31 @@ void Insere_Posicao(TLista_De_Posicoes* pLista, int posicao){
 void Imprimir_Posicao(TLista_De_Posicoes* pLista){
 
 	CPosicao* pAux;
-    pAux = pLista->pPrimeiro->pProx;
-    while(pAux != NULL) {
-    
-        printf("%d ", pAux->posicao);
-        pAux = pAux->pProx;
+	pAux = pLista->pPrimeiro->pProx;
+	while(pAux != NULL) {
+		printf("%d ", pAux->posicao);
+        	pAux = pAux->pProx;
     
     }
 
+}
+
+int Verifica_Posicao(TLista_De_Posicoes* pLista, int posicao){
+	
+	CPosicao *pAux;
+	pAux = pLista->pPrimeiro->pProx;
+	while(pAux != NULL){
+		
+		if (pAux->posicao == linha){
+			
+			return 1;
+			
+		}
+		
+		pAux = pAux->pProx;
+		
+	}
+	
+	return 0;
+	
 }
