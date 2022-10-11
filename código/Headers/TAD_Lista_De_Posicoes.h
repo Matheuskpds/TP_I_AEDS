@@ -18,3 +18,4 @@ typedef struct { //Lista de posições
 void FLPosicoes_Vazia(TLista_De_Posicoes* pLista);
 void Insere_Posicao(TLista_De_Posicoes* pLista, int posicao);
 void Imprimir_Posicao(TLista_De_Posicoes* pLista);
+int Verifica_Posicao(TLista_De_Posicoes* pLista, int posicao);
