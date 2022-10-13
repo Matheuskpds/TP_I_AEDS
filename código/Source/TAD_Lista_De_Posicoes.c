@@ -1,13 +1,10 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
 #include"TAD_Posicao.h"
 
 void FLPosicoes_Vazia(TLista_De_Posicoes* pLista){
 
-    pLista->pPrimeiro = (CPosicao*)malloc(sizeof(CPosicao));
-    pLista->pUltimo = pLista->pPrimeiro;
-    pLista->pPrimeiro->pProx = NULL;
+	pLista->pPrimeiro = (Apontador_posicao) malloc(sizeof(CPosicao));
+	pLista->pUltimo = pLista->pPrimeiro;
+	pLista->pPrimeiro->pProx = NULL;
 
 }
 
@@ -28,8 +25,9 @@ void Imprimir_Posicao(TLista_De_Posicoes* pLista){
     
         printf("%d ", pAux->posicao);
         pAux = pAux->pProx;
-    
+
     }
+    printf("\n");
 
 }
 
