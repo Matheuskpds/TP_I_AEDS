@@ -45,11 +45,11 @@ void Insere_Nova_Palavra(TLista_De_Palavras *pLista, char *palavra, int linha){
 		TPalavra Palavra;
 		tamanho = strlen(palavra);
 		pLista->pUltimo_Lista->pProx = (Apontador) malloc(sizeof(CPalavra));
-    	pLista->pUltimo_Lista = pLista->pUltimo_Lista->pProx;
-    	pLista->pUltimo_Lista->pProx = NULL;
-    	Cria_Palavra_Vazia(&Palavra, tamanho);
-    	Insere_Posicao(&Palavra.posicoes, linha);
-    	Preenche_Cadeia_De_Caracteres(&Palavra, palavra);
+		pLista->pUltimo_Lista = pLista->pUltimo_Lista->pProx;
+		pLista->pUltimo_Lista->pProx = NULL;
+		Cria_Palavra_Vazia(&Palavra, tamanho);
+		Insere_Posicao(&Palavra.posicoes, linha);
+		Preenche_Cadeia_De_Caracteres(&Palavra, palavra);
 		pLista->pUltimo_Lista->Palavra = Palavra;
 
 		
