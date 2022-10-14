@@ -29,7 +29,7 @@ void resp_usuario(){
         {
             case 1:
                 printf("\n");
-                Insere_Nova_Palavra(&pListaDePalavras, "matheus", 8);
+                Insere_Nova_Palavra(&pListaDePalavras, "matheus", 8); \\apenas teste, ainda não temos o dicionário.
                 break;
             
             case 2:
