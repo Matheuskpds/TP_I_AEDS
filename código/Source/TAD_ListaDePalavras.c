@@ -1,20 +1,20 @@
-#include"TAD_Lista_De_Palavras.h"
+#include"../Headers/TAD_ListaDePalavras.h"
 
 void Criar_Nova_Lista_De_Palavra(TLista_De_Palavras *pLista){
 	
-    pLista->pPrimeiro_Lista = (CPalavra*)malloc(sizeof(CPalavra));
+    pLista->pPrimeiro_Lista = (Apontador)malloc(sizeof(CPalavra));
     pLista->pUltimo_Lista = pLista->pPrimeiro_Lista;
     pLista->pPrimeiro_Lista->pProx = NULL;
 
 }
 
-CPalavra* Verifica_Palavra(TLista_De_Palavras* pLista, char *palavra){
+Apontador Verifica_Palavra(TLista_De_Palavras* pLista, char *palavra){
 	
-	CPalavra *pAux;
+	Apontador pAux;
 	pAux = pLista->pPrimeiro_Lista->pProx;
 	while(pAux != NULL){
 		
-		if (strcmp(palavra, pAux->Palavra->Palavra) == 0){
+		if (strcmp(palavra, pAux->Palavra.Palavra) == 0){
 			
 			return pAux;
 			
@@ -28,28 +28,32 @@ CPalavra* Verifica_Palavra(TLista_De_Palavras* pLista, char *palavra){
 	
 }
 
-void Insere_Nova_Palavra(TLista_De_Palavras *pLista, char *palavra, int tamanho, int linha){
+void Insere_Nova_Palavra(TLista_De_Palavras *pLista, char *palavra, int linha){
 
-/*	CPalavra* PExiste;
+	CPalavra* PExiste;
 	PExiste = Verifica_Palavra(pLista, palavra);
 	
 	if (PExiste != 0){
-		
-		Insere_Posicao(PExiste->Palavra->posicoes, linha);
+		if(Verifica_Posicao(&pLista->pUltimo_Lista->Palavra.posicoes, linha) == 0)
+			Insere_Posicao(&PExiste->Palavra.posicoes, linha);
 		return;
 		
 	}
 	else{
-		*/
-		pLista->pUltimo_Lista->pProx = (CPalavra*)malloc(sizeof(CPalavra));
-    	pLista->pUltimo_Lista = pLista->pPrimeiro_Lista->pProx;
-    	pLista->pUltimo_Lista->pProx = NULL;
-    	Cria_Palavra_Vazia(pLista->pUltimo_Lista->Palavra, tamanho);
-    	Preenche_Cadeia_De_Caracteres(pLista->pUltimo_Lista->Palavra, palavra);
-    	Insere_Posicao(pLista->pUltimo_Lista->Palavra->posicoes, linha);
+		
+		int tamanho;
+		TPalavra Palavra;
+		tamanho = strlen(palavra);
+		pLista->pUltimo_Lista->pProx = (Apontador) malloc(sizeof(CPalavra));
+		pLista->pUltimo_Lista = pLista->pUltimo_Lista->pProx;
+		pLista->pUltimo_Lista->pProx = NULL;
+		Cria_Palavra_Vazia(&Palavra, tamanho);
+		Insere_Posicao(&Palavra.posicoes, linha);
+		Preenche_Cadeia_De_Caracteres(&Palavra, palavra);
+		pLista->pUltimo_Lista->Palavra = Palavra;
 
 		
-//	}
+	}
 
 }
 
@@ -63,24 +67,24 @@ void Remove_Palavra_Final(TLista_De_Palavras *pLista){
 	}
 	
 	free(pNovo_Ultimo->pProx);
-	pNovo_Ultimo = NULL;
+	pNovo_Ultimo->pProx = NULL;
 	pLista->pUltimo_Lista = pNovo_Ultimo;
 
 }
 
 void Remove_Palavra(TLista_De_Palavras *pLista, char *palavra){
 	
-	CPalavra* pRemovedor;
-	CPalavra* pAux;
-	pAux = pLista->pPrimeiro_Lista->pProx;
+	Apontador pRemovedor;
+	Apontador pAux;
+	pAux = pLista->pPrimeiro_Lista;
 	
-	while((strcmp(palavra, pAux->pProx->Palavra->Palavra) != 0) && pAux->pProx != NULL){
+	while((strcmp(palavra, pAux->pProx->Palavra.Palavra) != 0) && pAux != NULL){
 		
 		pAux = pAux->pProx;
 		
 	}
 	
-	if(strcmp(palavra, pAux->pProx->Palavra->Palavra) == 0){
+	if(strcmp(palavra, pAux->pProx->Palavra.Palavra) == 0){
 		
 		pRemovedor = pAux->pProx;
 		pAux->pProx = pAux->pProx->pProx;
@@ -116,12 +120,12 @@ int Retorna_Numero_De_Palavras(TLista_De_Palavras *pLista){
 
 void Imprime_Lista_De_Palavras(TLista_De_Palavras *pLista){
 	
-	CPalavra* pAux;
+	Apontador pAux;
 	pAux = pLista->pPrimeiro_Lista->pProx;
 	
 	while(pAux != NULL){
 		
-		Imprime_Palavra(pAux->Palavra);
+		Imprime_Palavra(&pAux->Palavra);
 		pAux = pAux->pProx;
 
 	}
