@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-    
+#include <string.h>
+
+typedef struct Posicao* Apontador_posicao;
 typedef struct Posicao { //Célula para guardar as posições 
     
     int posicao;
@@ -10,8 +12,8 @@ typedef struct Posicao { //Célula para guardar as posições
 
 typedef struct { //Lista de posições 
     
-    CPosicao *pPrimeiro;
-    CPosicao *pUltimo;
+    Apontador_posicao pPrimeiro;
+    Apontador_posicao pUltimo;
     
 }TLista_De_Posicoes;
 
