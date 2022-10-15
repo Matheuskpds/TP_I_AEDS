@@ -19,9 +19,9 @@ typedef struct{
 //operacoes do dicionario
 void Inicializa_Dicionario(TDicionario* pDicionario);
 void Constroi_Dicionario(TDicionario* pDicionario);
-void Cria_e_Insere_Nova_Lista(TDicionario* pDicionario, char letra);
+TLista_De_Palavras* Cria_e_Insere_Nova_Lista(TDicionario* pDicionario, char letra);
 ApontadorDicionario Verifica_Lista(TDicionario* pDicionario, char letra);
 int Dicionario_eh_vazio(TDicionario* pDicionario);
 void Ordena_Dicionario(TDicionario* pDicionario);
 void Imprime_Dicionario(TDicionario Dicionario);
-
+void Insere_Palavra_Dicionario(TDicionario* pDicionario, char* palavra, int linha);
