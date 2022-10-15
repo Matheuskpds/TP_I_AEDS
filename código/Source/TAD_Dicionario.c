@@ -30,32 +30,32 @@ void Constroi_Dicionario(TDicionario* pDicionario){
         //não existe palavra maior que 50 caracteres
         char palavra[50], caractere;
         while (!feof(arquivo)){
+
             fscanf(arquivo,"%s%c",palavra,&caractere);
             numLetras=strlen(palavra);
             if(caractere=='\n'){
                 linha++;
             }
             //mando a palavra e a linha  para a função insere da lista de palavras
-            
-            Insere_Nova_Palavra(&listaPalavras, palavra, linha);
+            Insere_Palavra_Dicionario(pDicionario, palavra, linha);
         }
-        Imprime_Lista_De_Palavras(&listaPalavras);
 
     }
     
     
 }
 
-void Cria_e_Insere_Nova_Lista(TDicionario *pDicionario, char letra){
+TLista_De_Palavras* Cria_e_Insere_Nova_Lista(TDicionario *pDicionario, char letra){
 
     TLista_De_Palavras lista_de_palavras;
     Criar_Nova_Lista_De_Palavra(&lista_de_palavras);
     ApontadorDicionario pAux_Ordenador;
-
+    TLista_De_Palavras* Lista_Palavra;
 	if (Verifica_Lista(pDicionario, letra) != 0){
 
 		printf("Ja existe uma lista com essa letra");
-		
+		return 0;
+
 	}
 	else{
         if(Dicionario_eh_vazio(pDicionario)){
@@ -73,11 +73,10 @@ void Cria_e_Insere_Nova_Lista(TDicionario *pDicionario, char letra){
             pDicionario->pUltimo->pProx = NULL;
             pDicionario->pUltimo->ListaDePalavras = lista_de_palavras;
             pDicionario->pUltimo->letra_lista = letra;
-            
         }
+        Lista_Palavra = &pDicionario->pUltimo->ListaDePalavras;
+        return Lista_Palavra;
 
-
-		
     }
 }
 
@@ -120,6 +119,21 @@ void Imprime_Dicionario(TDicionario Dicionario){
         printf("|%c|\n", pAux->letra_lista);
         Imprime_Lista_De_Palavras(&pAux->ListaDePalavras);
         pAux = pAux->pProx;
+    }
+
+}
+
+void Insere_Palavra_Dicionario(TDicionario* pDicionario, char* palavra, int linha){
+
+    if(Verifica_Lista(pDicionario, palavra[0]) != 0){
+
+        Insere_Nova_Palavra(&Verifica_Lista(pDicionario, palavra[0])->ListaDePalavras, palavra, linha);
+
+    }
+    else{
+
+        Insere_Nova_Palavra(Cria_e_Insere_Nova_Lista(pDicionario, palavra[0]), palavra, linha);
+        
     }
 
 }
