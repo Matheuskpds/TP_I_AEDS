@@ -1,64 +1,69 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "TAD_Lista_De_Palavras.h"
+#include "TAD_Dicionario.h"
 
-void menu(){
-    
+void opcoes(){
     printf("-=-=-=-=-=-=-=-=-=-=-=-= MENU -=-=-=-=-=-=-=-=-=-=-=\n");
 
     printf("[1] Inicializar com arquivo txt\n");
-    printf("[2] Imprimir Palavras com Posicoes\n");
-    printf("[3] Remover Ultima Palavra\n");
-    printf("[4] Remover determinada palavra\n");
-    printf("[5] Encerrar programa\n");
+    printf("[2] Imprimir Dicionario\n");
+    printf("[3] Imprimir Dicionario em Ordem Alfabética\n");
+    printf("[4] Remover Ultima Palavra\n");
+    printf("[5] Remover determinada palavra\n");
+    printf("[6] Encerrar programa\n");
 
     printf("-=-=--=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 }
 
 
-void resp_usuario(){
+void menu(){
     TLista_De_Palavras pListaDePalavras;
+    TDicionario pDicionario;
+
+
     int resp;
+    char enter;
     int loop=1;
     char deletar_palavra[50] = {0};
-    Criar_Nova_Lista_De_Palavra(&pListaDePalavras);
-    while(loop){
-        menu();
+    Inicializa_Dicionario(&pDicionario);
+    //while(loop){
+        /*opcoes();
         scanf("%d", &resp);
-        switch (resp)
-        {
+        fflush(stdin);
+        getchar();*/
+        /*switch(resp){
             case 1:
-                printf("\n");
-                Insere_Nova_Palavra(&pListaDePalavras, "matheus", 8); \\apenas teste, ainda não temos o dicionário.
+                Constroi_Dicionario(&pDicionario);
                 break;
-            
             case 2:
-                Imprime_Lista_De_Palavras(&pListaDePalavras);
+                //Imprimir palavras com posicoes
+                Imprime_Dicionario(pDicionario);
                 break;
             case 3:
+                //Aguardando a função ser criada
+            /*case 4:
                 Remove_Palavra_Final(&pListaDePalavras);
-            case 4:
+                break;
+            case 5:
                 fgets(deletar_palavra, 50, stdin);
                 Remove_Palavra(&pListaDePalavras, deletar_palavra);
-            case 5:
-                printf("Programa Encerrado. \n");
+                break;
+            case 6:
+                printf("Programa Encerrado.\n");
                 loop = 0;
                 break;
-            
-            default:
-                break;
         }
-        if(resp!=5){
-          printf("\n\nAperte uma tecla para continuar: ");
-          fflush(stdin);
-          getchar();
-    }
+        if(resp!=6){
+            printf("Aperte enter para continuar.//");
+            printf("\n");
+            scanf("%c", &enter);
+        }*/
+    //}
+    Constroi_Dicionario(&pDicionario);
+    Imprime_Dicionario(pDicionario);
+      
 }
 
-
 int main(){
-   TPalavra pPalavra;
-   TLista_De_Palavras pListaDePalavras;
-   TLista_De_Posicoes pListaDePosicoes;
-   resp_usuario();
+    menu();
 }
