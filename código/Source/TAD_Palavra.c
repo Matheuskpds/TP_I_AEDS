@@ -21,7 +21,8 @@ char* Retorna_Cadeia_De_Caracteres(TPalavra* pPalavra){
 }
 
 void Imprime_Cadeia_De_Caracteres(TPalavra* pPalavra){
-	printf("%s\n", pPalavra->Palavra);
+	printf("---------------------\n");
+    printf("Palavra: %s\n", pPalavra->Palavra);
 }
 
 void Imprime_Palavra(TPalavra* pPalavra){
