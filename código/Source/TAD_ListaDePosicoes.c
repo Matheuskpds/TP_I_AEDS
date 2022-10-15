@@ -21,12 +21,14 @@ void Imprimir_Posicao(TLista_De_Posicoes* pLista){
 
 	CPosicao* pAux;
     pAux = pLista->pPrimeiro->pProx;
+    printf("Linhas: ");
     while(pAux != NULL) {
-    
-        printf("%d ", pAux->posicao);
+
+        printf("[%d] ", pAux->posicao);
         pAux = pAux->pProx;
 
     }
+    printf("\n--------------------\n");
     printf("\n");
 
 }
@@ -49,5 +51,4 @@ int Verifica_Posicao(TLista_De_Posicoes* pLista, int posicao){
 	
 	return 0;
 	
-}	
-
+}
